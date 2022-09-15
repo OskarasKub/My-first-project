@@ -15,7 +15,7 @@ struct studentas {
 
 int main() {
     studentas A;
-    int n, p, sum = 0, t;
+    int n = 0, p, sum = 0, t;
 
     cout << "Iveskite studento varda: "; cin >> A.vardas;
     cout << "Iveskite studento pavarde: "; cin >> A.pavarde;
@@ -29,30 +29,27 @@ int main() {
         continue;
     }
 
-    cout << "Kiek turi namu darbu pazymiu?: "; cin >> n;
-    while (cin.fail() || n < 0) {
-        cout << "Pazymiu kiekis turi buti teigiamas SKAICIUS!" << endl;
-        cin.clear();
-        cin.ignore(256, '\n');
-        cout << "Kiek turi namu darbu pazymiu?: "; cin >> n;
-        continue;
-    }
-
-    for (int i = 0; i < n; i++) {
-        cout << "Iveskite " << i + 1 << "-aji pazymi: ";
+    int i = 0;
+    cout << "Veskite namu darbu pazymius. Jei pazymiu nebera iveskite 0." << endl;
+    while (A.paz[i] != 0) {
+        cout << "Iveskikte " << i + 1 << "-aji namu darbu pazymi: ";
         cin >> A.paz[i];
-        while (cin.fail() || A.paz[i] < 1 || A.paz[i] > 10) {
+        while (cin.fail() || A.paz[i] < 0 || A.paz[i] > 10) {
             cout << "Pazymys turi buti SKAICIUS nuo 1 iki 10!" << endl;
             cin.clear();
             cin.ignore(256, '\n');
-            cout << "Iveskite " << i + 1 << "-aji pazymi: "; cin >> A.paz[i];
+            cout << "Iveskikte " << i + 1 << "-aji namu darbu pazymi: "; cin >> A.paz[i];
             continue;
         }
-        sum += A.paz[i];
+        if (A.paz[i] != 0) {
+            sum += A.paz[i];
+            i++;
+            n++;
+        }
     }
 
     p = n;
-
+ 
     for (int i = p; i > 0; i--) {
         A.paz[i] = A.paz[i - 1];
     }
@@ -77,7 +74,10 @@ int main() {
         A.pazymys = double(A.egz) * 0.60;
     }
 
-    if (p % 2 == 0) {
+    if (p == 0) {
+        A.mediana = A.paz[p];
+    }
+    else if (p % 2 == 0) {
         A.mediana = (A.paz[p / 2] + A.paz[p / 2 - 1]) / 2.0;
     }
     else {
