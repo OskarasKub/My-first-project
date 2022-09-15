@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <time.h>
 
 using namespace std;
 
@@ -18,33 +19,98 @@ int main() {
     int n = 0, p, sum = 0, t;
 
     cout << "Iveskite studento varda: "; cin >> A.vardas;
-    cout << "Iveskite studento pavarde: "; cin >> A.pavarde;
+    cout << "\nIveskite studento pavarde: "; cin >> A.pavarde;
 
-    cout << "Iveskite egzamino pazymi: "; cin >> A.egz;
-    while (cin.fail() || A.egz < 1 || A.egz > 10) {
-        cout << "Egzamino pazymys turi buti SKAICIUS nuo 1 iki 10!" << endl;
+    string gen;
+    cout << "\nAr norite patys ivesti studento pazymius? (T-suvesti, N-sugeneruoti atsitiktinai): "; cin >> gen;
+    while (gen != "T" && gen != "N") {
+        cout << "Kazka ne taip ivedete!" << endl;
         cin.clear();
         cin.ignore(256, '\n');
-        cout << "Iveskite egzamino pazymi: "; cin >> A.egz;
+        cout << "Iveskite T, jei norite patys ivesti studento pazymius arba N, jei norite, kad jie butu sugeneruoti atsitiktinai: "; cin >> gen;
         continue;
     }
 
-    int i = 0;
-    cout << "Veskite namu darbu pazymius. Jei pazymiu nebera iveskite 0." << endl;
-    while (A.paz[i] != 0) {
-        cout << "Iveskikte " << i + 1 << "-aji namu darbu pazymi: ";
-        cin >> A.paz[i];
-        while (cin.fail() || A.paz[i] < 0 || A.paz[i] > 10) {
-            cout << "Pazymys turi buti SKAICIUS nuo 1 iki 10!" << endl;
+    if (gen == "T") {
+        cout << "\nIveskite egzamino pazymi: "; cin >> A.egz;
+        while (cin.fail() || A.egz < 1 || A.egz > 10) {
+            cout << "Egzamino pazymys turi buti SKAICIUS nuo 1 iki 10!" << endl;
             cin.clear();
             cin.ignore(256, '\n');
-            cout << "Iveskikte " << i + 1 << "-aji namu darbu pazymi: "; cin >> A.paz[i];
+            cout << "Iveskite egzamino pazymi: "; cin >> A.egz;
             continue;
         }
-        if (A.paz[i] != 0) {
-            sum += A.paz[i];
-            i++;
-            n++;
+
+        string zin;
+        cout << "\nAr zinote namu darbu pazymiu skaiciu? (T-taip, N-ne): "; cin >> zin;
+        while (zin != "T" && zin != "N") {
+            cout << "Kazka ne taip ivedete!" << endl;
+            cin.clear();
+            cin.ignore(256, '\n');
+            cout << "Iveskite T, jei zinote namu darbu skaiciu arba N, jei nezinote: "; cin >> zin;
+            continue;
+        }
+
+        if (zin == "T") {
+            cout << "\nKiek turi namu darbu pazymiu?: "; cin >> n;
+            while (cin.fail() || n < 0) {
+                cout << "Pazymiu kiekis turi buti teigiamas SKAICIUS!" << endl;
+                cin.clear();
+                cin.ignore(256, '\n');
+                cout << "Kiek turi namu darbu pazymiu?: "; cin >> n;
+                continue;
+            }
+
+            for (int i = 0; i < n; i++) {
+                cout << "\nIveskite " << i + 1 << "-aji pazymi: ";
+                cin >> A.paz[i];
+                while (cin.fail() || A.paz[i] < 1 || A.paz[i] > 10) {
+                    cout << "Pazymys turi buti SKAICIUS nuo 1 iki 10!" << endl;
+                    cin.clear();
+                    cin.ignore(256, '\n');
+                    cout << "Iveskite " << i + 1 << "-aji pazymi: "; cin >> A.paz[i];
+                    continue;
+                }
+                sum += A.paz[i];
+            }
+        }
+        else {
+            int i = 0;
+            cout << "\nVeskite namu darbu pazymius. Jei pazymiu nebera iveskite 0.\n" << endl;
+            while (A.paz[i] != 0) {
+                cout << "Iveskite " << i + 1 << "-aji namu darbu pazymi: ";
+                cin >> A.paz[i];
+                while (cin.fail() || A.paz[i] < 0 || A.paz[i] > 10) {
+                    cout << "Pazymys turi buti SKAICIUS nuo 1 iki 10!" << endl;
+                    cin.clear();
+                    cin.ignore(256, '\n');
+                    cout << "Iveskite " << i + 1 << "-aji namu darbu pazymi: "; cin >> A.paz[i];
+                    continue;
+                }
+                if (A.paz[i] != 0) {
+                    sum += A.paz[i];
+                    i++;
+                    n++;
+                }
+            }
+        }
+    }
+    else {
+        srand(time(0));
+
+        int rPaz = rand() % 10 + 1;
+        cout << "\nSugeneruotas egzamino pazymys: " << rPaz << endl;
+        A.egz = rPaz;
+
+        int rKiek = rand() % 20 + 0;
+        cout << "\nSugeneruotas namu darbu pazymiu kiekis: " << rKiek << endl;
+        n = rKiek;
+
+        for (int i = 0; i < n; i++) {
+            int rPaz = rand() % 10 + 1;
+            cout << "\nSugeneruotas " << i + 1 << "-asis pazymys: " << rPaz << endl;
+                A.paz[i] = rPaz;
+                sum += rPaz;
         }
     }
 
