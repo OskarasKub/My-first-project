@@ -77,8 +77,15 @@ int main() {
         A.pazymys = double(A.egz) * 0.60;
     }
 
-    cout << "\n\n" << left << setw(A.vardas.length() + 5) << "Vardas" << left << setw(A.pavarde.length() + 5) << "Pavarde" << left << setw(15) << "Galutinis(Vid.)" << endl;
+    if (p % 2 == 0) {
+        A.mediana = (A.paz[p / 2] + A.paz[p / 2 - 1]) / 2.0;
+    }
+    else {
+        A.mediana = A.paz[p / 2];
+    }
+
+    cout << "\n\n" << left << setw(A.vardas.length() + 5) << "Vardas" << left << setw(A.pavarde.length() + 5) << "Pavarde" << left << setw(15) << "Galutinis(Vid.)" << left << setw(3) << " / " << left << setw(15) << "Galutinis(Med.)" << endl;
     cout << setfill('-') << setw(A.vardas.length() + A.pavarde.length() + 43) << '-' << endl;
-    cout << setfill(' ') << left << setw(A.vardas.length() + 5) << A.vardas << left << setw(A.pavarde.length() + 5) << A.pavarde << left << setw(18) << fixed << setprecision(2) << A.pazymys <<  endl;
+    cout << setfill(' ') << left << setw(A.vardas.length() + 5) << A.vardas << left << setw(A.pavarde.length() + 5) << A.pavarde << left << setw(18) << fixed << setprecision(2) << A.pazymys << left << setw(15) << fixed << setprecision(2) << A.mediana << endl;
     return 0;
 }
