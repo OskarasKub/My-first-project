@@ -10,12 +10,12 @@ Jei žmogus pasirenka T tai jam reikės viską vesti ir tai prasidės 34 eilutė
 
 Namų darbų skaičius ir pažymiai veikia tokiu pačiu principu, tačiau čia žmogus gali pasirinkti ar iš karto suves pažymių kiekį ar tiesiog berašant pažymius suves 0 ir taip užbaigs rašymą.
 
-(117) Pasiimu naują kintamajį p, kurį prisilyginu namų darbų pažymių skaičiui, nes po to reikės pridėti 1 dėl egzamino pažymio, kad gaučiau visų pažymių skaičių. Galima tiesiog visur rašyti n+1, bet man taip gražiau.
+(118) Duodu pasirinkti, ar norima vidurkio, ar medianos.
 
-(119) Pastumiu visus pažymius per vieną ir tada įsistatau egzamino pažymį į 0 sekos poziciją.
+(127) Pasiimu naują kintamajį p, kurį prisilyginu namų darbų pažymių skaičiui, nes po to reikės pridėti 1 dėl egzamino pažymio, kad gaučiau visų pažymių skaičių. Galima tiesiog visur rašyti n+1, bet man taip gražiau.
 
-(126) Su insertion sort surūšiuoju pažymius mažėjimo tvarka.
+(129) Pastumiu visus pažymius per vieną ir tada įsistatau egzamino pažymį į 0 sekos poziciją.
 
-(136) Pagal duotą formulę apskaičiuoju galutinį pažymį ir medianą.
+(136) Su insertion sort surūšiuoju pažymius mažėjimo tvarka.
 
-(153) Išrašau visą informaciją į lentelę, ją gražiai sulygiuodamas su setw() pagalba.
+Priklausant nuo ankstesnio pasirinkimo apskaičiuoju arba vidurkį arbą medianą ir viską gražiai išrašau į lentelę sulytgiuodams su setw() pagalba.
