@@ -109,13 +109,23 @@ int main() {
         for (int i = 0; i < n; i++) {
             int rPaz = rand() % 10 + 1;
             cout << "\nSugeneruotas " << i + 1 << "-asis pazymys: " << rPaz << endl;
-                A.paz[i] = rPaz;
-                sum += rPaz;
+            A.paz[i] = rPaz;
+            sum += rPaz;
         }
     }
 
+    string pas;
+    cout << "\nJei norite pazymiu vidurkio spauskite ""V"", jei norite medianos spauskite ""M"": "; cin >> pas;
+    while (pas != "V" && pas != "M") {
+        cout << "Kazka ne taip ivedete!" << endl;
+        cin.clear();
+        cin.ignore(256, '\n');
+        cout << "Iveskite V, jei norite, kad butu apskaiciuotas vidurkis arba M, jei norite medianos: "; cin >> pas;
+        continue;
+    }
+
     p = n;
- 
+
     for (int i = p; i > 0; i--) {
         A.paz[i] = A.paz[i - 1];
     }
@@ -133,25 +143,33 @@ int main() {
         }
     }
 
-    if (n > 0) {
-        A.pazymys = double(sum) / double(n) * 0.40 + double(A.egz) * 0.60;
+    if (pas == "V") {
+        if (n > 0) {
+            A.pazymys = double(sum) / double(n) * 0.40 + double(A.egz) * 0.60;
+        }
+        else {
+            A.pazymys = double(A.egz) * 0.60;
+        }
+
+        cout << "\n\n" << left << setw(A.vardas.length() + 5) << "Vardas" << left << setw(A.pavarde.length() + 5) << "Pavarde" << left << setw(15) << "Galutinis(Vid.)" << endl;
+        cout << setfill('-') << setw(A.vardas.length() + A.pavarde.length() + 25) << '-' << endl;
+        cout << setfill(' ') << left << setw(A.vardas.length() + 5) << A.vardas << left << setw(A.pavarde.length() + 5) << A.pavarde << left << setw(18) << fixed << setprecision(2) << A.pazymys << endl;
     }
     else {
-        A.pazymys = double(A.egz) * 0.60;
+        if (p == 0) {
+            A.mediana = A.paz[p];
+        }
+        else if (p % 2 == 0) {
+            A.mediana = (A.paz[p / 2] + A.paz[p / 2 - 1]) / 2.0;
+        }
+        else {
+            A.mediana = A.paz[p / 2];
+        }
+
+        cout << "\n\n" << left << setw(A.vardas.length() + 5) << "Vardas" << left << setw(A.pavarde.length() + 5) << "Pavarde" << left << setw(15) << "Galutinis(Med.)" << endl;
+        cout << setfill('-') << setw(A.vardas.length() + A.pavarde.length() + 25) << '-' << endl;
+        cout << setfill(' ') << left << setw(A.vardas.length() + 5) << A.vardas << left << setw(A.pavarde.length() + 5) << A.pavarde << left << setw(15) << fixed << setprecision(2) << A.mediana << endl;
     }
 
-    if (p == 0) {
-        A.mediana = A.paz[p];
-    }
-    else if (p % 2 == 0) {
-        A.mediana = (A.paz[p / 2] + A.paz[p / 2 - 1]) / 2.0;
-    }
-    else {
-        A.mediana = A.paz[p / 2];
-    }
-
-    cout << "\n\n" << left << setw(A.vardas.length() + 5) << "Vardas" << left << setw(A.pavarde.length() + 5) << "Pavarde" << left << setw(15) << "Galutinis(Vid.)" << left << setw(3) << " / " << left << setw(15) << "Galutinis(Med.)" << endl;
-    cout << setfill('-') << setw(A.vardas.length() + A.pavarde.length() + 43) << '-' << endl;
-    cout << setfill(' ') << left << setw(A.vardas.length() + 5) << A.vardas << left << setw(A.pavarde.length() + 5) << A.pavarde << left << setw(18) << fixed << setprecision(2) << A.pazymys << left << setw(15) << fixed << setprecision(2) << A.mediana << endl;
     return 0;
 }
