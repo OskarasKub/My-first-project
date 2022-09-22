@@ -176,7 +176,7 @@ int main() {
 
             cout << "\n\n" << left << setw(A[x].vardas.length() + 5) << "Vardas" << left << setw(A[x].pavarde.length() + 5) << "Pavarde" << left << setw(15) << "Galutinis(Vid.)" << endl;
             cout << setfill('-') << setw(A[x].vardas.length() + A[x].pavarde.length() + 25) << '-' << endl;
-            cout << setfill(' ') << left << setw(A[x].vardas.length() + 5) << A[x].vardas << left << setw(A[x].pavarde.length() + 5) << A[x].pavarde << left << setw(18) << fixed << setprecision(2) << A[x].pazymys << endl;
+            cout << setfill(' ') << left << setw(A[x].vardas.length() + 5) << A[x].vardas << left << setw(A[x].pavarde.length() + 5) << A[x].pavarde << left << setw(18) << fixed << setprecision(2) << A[x].vidurkis << endl;
         }
         else {
             if (p == 0) {
