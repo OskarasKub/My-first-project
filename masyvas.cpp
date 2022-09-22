@@ -16,10 +16,10 @@ using std::setprecision;
 struct Studentas {
     string vardas;
     string pavarde;
-    double pazymys;
     int n=0;
     int paz[10];
     int egz;
+    double vidurkis;
     double mediana;
     int sum=0;
 };
@@ -168,10 +168,10 @@ int main() {
 
         if (pas == "V" || pas == "v") {
             if (A[x].n > 0) {
-                A[x].pazymys = double(A[x].sum) / double(A[x].n) * 0.40 + double(A[x].egz) * 0.60;
+                A[x].vidurkis = double(A[x].sum) / double(A[x].n) * 0.40 + double(A[x].egz) * 0.60;
             }
             else {
-                A[x].pazymys = double(A[x].egz) * 0.60;
+                A[x].vidurkis = double(A[x].egz) * 0.60;
             }
 
             cout << "\n\n" << left << setw(A[x].vardas.length() + 5) << "Vardas" << left << setw(A[x].pavarde.length() + 5) << "Pavarde" << left << setw(15) << "Galutinis(Vid.)" << endl;
