@@ -180,45 +180,50 @@ void nuskaitymas(vector<Studentas> &A, int &kiek) {
     ifstream fin;
     kiek = 0;
     
-    fin.open("Studentai10000.txt");
-
-    getline(fin >> std::ws, zodziai);
-    int n = kiekPazymiu(zodziai) - 3;
-
-    A.push_back(Studentas());
-    A[kiek].paz.push_back(n);
-
-    while (!fin.eof()) {
-        A.push_back(Studentas());
-        A[kiek].n = n;
-        fin >> A[kiek].vardas;
-        fin >> A[kiek].pavarde;
-
-        for (int i = 0; i < n; i++) {
-            A[kiek].paz.push_back(1);
-            fin >> A[kiek].paz[i];
-            A[kiek].sum += A[kiek].paz[i];
+    try {
+        fin.open("kursiokai.txt");
+        if (!fin.is_open()) {
+            throw 0;
         }
-        fin >> A[kiek].egz;
-        kiek++;
+
+        getline(fin >> std::ws, zodziai);
+        int n = kiekPazymiu(zodziai) - 3;
+
+        A.push_back(Studentas());
+        A[kiek].paz.push_back(n);
+
+        while (!fin.eof()) {
+            A.push_back(Studentas());
+            A[kiek].n = n;
+            fin >> A[kiek].vardas;
+            fin >> A[kiek].pavarde;
+
+            for (int i = 0; i < n; i++) {
+                A[kiek].paz.push_back(1);
+                fin >> A[kiek].paz[i];
+                A[kiek].sum += A[kiek].paz[i];
+            }
+            fin >> A[kiek].egz;
+            kiek++;
+        }
+
+        fin.close();
+    
+        for (int x = 0; x < kiek; x++) {
+            vidurkis(A, x);
+            mediana(A, x);
+        }
     }
-
-    fin.close();
-
-    for (int x = 0; x < kiek; x++) {
-        vidurkis(A, x);
-        mediana(A, x);
+    catch (...) {
+        cout << "\nToks failas neegzistuoja!";
     }
 }
 
 void pavardziu_rusiavimas(vector<Studentas>& A, int kiek) {
     
     A.push_back(Studentas());
-    int x;
-        
     Laikinas L;
 
-    string laik;
     for (int i = 0; i < kiek; i++) {
         for (int j = 0; j < kiek - i - 1; j++) {
             if (A[j + 1].pavarde < A[j].pavarde) {
