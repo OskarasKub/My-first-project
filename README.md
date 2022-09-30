@@ -13,3 +13,5 @@
 -Pasirinkus vidurkį jis yra apskaičiuojamas duota formule, o jei pasirinkta mediana visų pirma pažymiai yra surūšiuojami mažėjimo tvarka ir taip randama mediana.
 
 -Galų gale visi rezultatai gražiai išrašomi į lentelę.
+
+-Lentelėje studentai surūšiuoti pagal pavardes.
