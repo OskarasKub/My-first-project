@@ -5,6 +5,10 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include "Studentas.h"
+#include "Vidurkis.h"
+#include "Mediana.h"
+#include "Laikinas.h"
 
 using std::cout;
 using std::cin;
@@ -17,6 +21,7 @@ using std::fixed;
 using std::setprecision;
 using std::vector;
 
+
 void sugeneravimas(vector<Studentas>& A, int x) {
     srand((unsigned int)time(0));
 
@@ -24,7 +29,7 @@ void sugeneravimas(vector<Studentas>& A, int x) {
     cout << "\nSugeneruotas egzamino pazymys: " << rPaz << endl;
     A[x].egz = rPaz;
 
-    int rKiek = rand() % 10 + 0;
+    int rKiek = rand() % 15 + 1;
     cout << "\nSugeneruotas namu darbu pazymiu kiekis: " << rKiek << endl;
     A[x].n = rKiek;
 
@@ -166,16 +171,16 @@ unsigned int kiekPazymiu(std::string const& str)
     return std::distance(std::istream_iterator<std::string>(stream), std::istream_iterator<std::string>());
 }
 
+
 void nuskaitymas(vector<Studentas> &A, int &kiek) {
 
     using std::ifstream;
 
-    string duom;
     string zodziai;
     ifstream fin;
     kiek = 0;
-
-    fin.open("kursiokai.txt");
+    
+    fin.open("Studentai10000.txt");
 
     getline(fin >> std::ws, zodziai);
     int n = kiekPazymiu(zodziai) - 3;
@@ -198,6 +203,8 @@ void nuskaitymas(vector<Studentas> &A, int &kiek) {
         kiek++;
     }
 
+    fin.close();
+
     for (int x = 0; x < kiek; x++) {
         vidurkis(A, x);
         mediana(A, x);
@@ -205,7 +212,33 @@ void nuskaitymas(vector<Studentas> &A, int &kiek) {
 }
 
 void pavardziu_rusiavimas(vector<Studentas>& A, int kiek) {
-    //?????????
+    
+    A.push_back(Studentas());
+    int x;
+        
+    Laikinas L;
+
+    string laik;
+    for (int i = 0; i < kiek; i++) {
+        for (int j = 0; j < kiek - i - 1; j++) {
+            if (A[j + 1].pavarde < A[j].pavarde) {
+                L.pavarde = A[j].pavarde;
+                L.vardas = A[j].vardas;
+                L.vidurkis = A[j].vidurkis;
+                L.mediana = A[j].mediana;
+
+                A[j].pavarde = A[j + 1].pavarde;
+                A[j].vardas = A[j + 1].vardas;
+                A[j].vidurkis = A[j + 1].vidurkis;
+                A[j].mediana = A[j + 1].mediana;
+
+                A[j + 1].pavarde = L.pavarde;
+                A[j + 1].vardas = L.vardas;
+                A[j + 1].vidurkis = L.vidurkis;
+                A[j + 1].mediana = L.mediana;
+            }
+        }
+    }
 }
 
 void isvedimas(vector<Studentas> A, int kiek) {
@@ -225,6 +258,11 @@ void isvedimas(vector<Studentas> A, int kiek) {
         else if (A[x - 1].pavarde.length() > ilgpavarde) {
             ilgpavarde = A[x - 1].pavarde.length();
         }
+    }
+
+    if (kiek == 1) {
+        ilgvardas = A[0].vardas.length();
+        ilgpavarde = A[0].pavarde.length();
     }
 
     pavardziu_rusiavimas(A, kiek);
@@ -270,5 +308,3 @@ int main() {
 
     return 0;
 }
-
-
