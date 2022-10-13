@@ -1,17 +1,5 @@
--Visų pirma leidžiama pasirinkti ar duomenys bus nuskaityti iš failo ar įvesti ranka.
+-Atsitiktinai sugeneruojami studentų sąrašai ir jų pažymiai (1 000, 100 000, 1 000 000 ir 10 000 000 studentų)
 
--Jei vartotojas pasirenka surašyti ranka visų pirma suveda kelių studentų duomenis ves ir tada pradeda nuo pirmojo ir suveda jo vardą bei pavardę. Duomenys išsaugomi struktūrose.
+-Tuomet sąrašai yra išvedami į failus.
 
--Tuomet duodamas pasirinkimas ar vesti pirmojo studento pažymius ranka, ar sugeneruoti atsitiktinai įvedant T arba N. (tinka ir t bei n)
-
--Jeigu pasirenkama N visi pažymiai bei jų kiekis sugeneruojamas atsitiktinai, o jei pasirenkama T visų pirma reikia įvesti egzamino pažymį. 
-
--Tada vėl iškyla pasirinkimas. Galima pasirinkti ar namų darbų skaičius iš karto yra žinomas, ar bus galima rašyti pažymius iki tol kol jų nebeliks. (įvedus 0 pažymių įvedimas pasibaigs)
-
--Surašius pažymius galima pasirinkti, kad būtų apskaičiuotas vidurkis arba mediana.
-
--Pasirinkus vidurkį jis yra apskaičiuojamas duota formule, o jei pasirinkta mediana visų pirma pažymiai yra surūšiuojami mažėjimo tvarka ir taip randama mediana.
-
--Galų gale visi rezultatai gražiai išrašomi į lentelę.
-
--Lentelėje studentai surūšiuoti pagal pavardes.
+-Tada sąrašai surušiuojami pagal studentų vidurkius ir padalinami į nevykėlius (vidurkis < 5) ir protinguolius (vidurkis >= 5). Surūšiuoti ir padalinti sąrašai taip pat išvedami į du atskirus failus.
