@@ -1,6 +1,0 @@
-Vardas	Pavarde		ND1	ND2	ND3	ND4	ND5	Egzaminas
-Simonas	Daukantas		9	8	6	4	7	8
-Petras	Grazulis		10	10	8	6	4	4
-Loreta	Grauziniene		6	4	8	8	8	6
-Stanislovas	Jonis			9	9	7	6	9	6
-Vykintas	Abramovicius	4	10	10	9	9	10
