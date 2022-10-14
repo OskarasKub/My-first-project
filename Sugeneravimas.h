@@ -70,7 +70,7 @@ void pazymiai(vector<Studentas>& A, int x) {
     int rPaz = rand() % 10 + 1;
     A[x].egz = rPaz;
 
-    int rKiek = rand() % 15 + 1;
+    int rKiek = 5;
     A[x].n = rKiek;
 
     for (int i = 0; i < A[x].n; i++) {
@@ -137,12 +137,15 @@ void failai(vector<Studentas>& A, int& kiek) {
             ilgpavarde = A[0].pavarde.length();
         }
 
-        fout << left << setw(ilgvardas + 5) << "Vardas" << left << setw(ilgpavarde + 5) << "Pavarde" << left << setw(15) << "Galutinis(Vid.)" << " / " << left << setw(15) << "Galutinis(Med.)" << endl;
-        fout << setfill('-') << setw(ilgvardas + ilgpavarde + 43) << '-' << endl;
+        fout << left << setw(ilgvardas + 5) << "Vardas" << left << setw(ilgpavarde + 5) << "Pavarde" << left << setw(5) << "ND1" << left << setw(5) << "ND2" << left << setw(5) << "ND3" << left << setw(5) << "ND4" << left << setw(5) << "ND5" << left << setw(5) << "EGZ" << endl;
+        fout << "\n";
         for (int x = 0; x < kiek; x++) {
             vidurkis(A, x);
-            mediana(A, x);
-            fout << setfill(' ') << left << setw(ilgvardas + 5) << A[x].vardas << left << setw(ilgpavarde + 5) << A[x].pavarde << left << setw(18) << fixed << setprecision(2) << A[x].vidurkis << left << setw(15) << fixed << setprecision(2) << A[x].mediana << endl;
+            fout << setfill(' ') << left << setw(ilgvardas + 5) << A[x].vardas << left << setw(ilgpavarde + 5) << A[x].pavarde;
+            for (int j = 0; j < A[x].n; j++) {
+                fout << left << setw(5) << A[x].paz[j];
+            }
+            fout << left << setw(5) << A[x].egz << endl;
         }
         fout.close();
 
@@ -157,21 +160,21 @@ void failai(vector<Studentas>& A, int& kiek) {
         t.reset();
 
         fout.open(to_string(kiek) + "nevykeliai.txt");
-        fout << left << setw(ilgvardas + 5) << "Vardas" << left << setw(ilgpavarde + 5) << "Pavarde" << left << setw(15) << "Galutinis(Vid.)" << " / " << left << setw(15) << "Galutinis(Med.)" << endl;
-        fout << setfill('-') << setw(ilgvardas + ilgpavarde + 43) << '-' << endl;
+        fout << left << setw(ilgvardas + 5) << "Vardas" << left << setw(ilgpavarde + 5) << "Pavarde" << left << setw(15) << "Galutinis(Vid.)" << endl;
+        fout << "\n";
         for (int x = 0; x < kiek; x++) {
             if (A[x].vidurkis < 5) {
-                fout << setfill(' ') << left << setw(ilgvardas + 5) << A[x].vardas << left << setw(ilgpavarde + 5) << A[x].pavarde << left << setw(18) << fixed << setprecision(2) << A[x].vidurkis << left << setw(15) << fixed << setprecision(2) << A[x].mediana << endl; 
-            }     
+                fout << setfill(' ') << left << setw(ilgvardas + 5) << A[x].vardas << left << setw(ilgpavarde + 5) << A[x].pavarde << left << setw(18) << fixed << setprecision(2) << A[x].vidurkis << endl;
+            }
         }
         fout.close();
 
         fout.open(to_string(kiek) + "protinguoliai.txt");
-        fout << left << setw(ilgvardas + 5) << "Vardas" << left << setw(ilgpavarde + 5) << "Pavarde" << left << setw(15) << "Galutinis(Vid.)" << " / " << left << setw(15) << "Galutinis(Med.)" << endl;
-        fout << setfill('-') << setw(ilgvardas + ilgpavarde + 43) << '-' << endl;
+        fout << left << setw(ilgvardas + 5) << "Vardas" << left << setw(ilgpavarde + 5) << "Pavarde" << left << setw(15) << "Galutinis(Vid.)" << endl;
+        fout << "\n";
         for (int x = 0; x < kiek; x++) {
             if (A[x].vidurkis >= 5) {
-                fout << setfill(' ') << left << setw(ilgvardas + 5) << A[x].vardas << left << setw(ilgpavarde + 5) << A[x].pavarde << left << setw(18) << fixed << setprecision(2) << A[x].vidurkis << left << setw(15) << fixed << setprecision(2) << A[x].mediana << endl;
+                fout << setfill(' ') << left << setw(ilgvardas + 5) << A[x].vardas << left << setw(ilgpavarde + 5) << A[x].pavarde << left << setw(18) << fixed << setprecision(2) << A[x].vidurkis << endl;
             }
             else {
                 break;
@@ -179,7 +182,7 @@ void failai(vector<Studentas>& A, int& kiek) {
         }
         fout.close();
 
-        cout << kiek << " studentu padalinimo i dvi grupes laikas ir surasymo i failus: " << t.elapsed() << endl;
+        cout << kiek << " studentu padalinimo i dvi grupes ir surasymo i failus laikas: " << t.elapsed() << endl;
         laik += t.elapsed();
         t.reset();
         cout << "\nDarbo su " << kiek << " irasu testo laikas: " << laik << endl;
