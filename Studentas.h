@@ -13,3 +13,10 @@ struct Studentas {
     double mediana; //Pazymiu mediana
     int sum = 0; //Pazymiu suma
 };
+
+struct Laikinas {
+    string vardas; //Studento vardas
+    string pavarde; //Studento pavarde
+    double vidurkis; //Pazymiu vidurkis
+    double mediana; //Pazymiu mediana
+};
