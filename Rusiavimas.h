@@ -5,7 +5,7 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
-#include "Laikinas.h"
+#include "Studentas.h"
 
 using std::cout;
 using std::cin;
