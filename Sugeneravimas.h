@@ -5,6 +5,7 @@
 #include <vector>
 #include <fstream>
 #include "Rusiavimas.h"
+#include "Timer.h"
 
 using std::cout;
 using std::cin;
@@ -97,17 +98,22 @@ void studentai(vector<Studentas>& A, int kiek) {
 
 void failai(vector<Studentas>& A, int& kiek) {
     ofstream fout;
+    Timer t;
+    double laik = 0;
 
-    kiek = 1000;
+    
     srand((unsigned int)time(0));
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 2; i++) {
+        kiek = 1000;
         for (int j = 0; j < i; j++) {
             kiek = kiek * 10;
         }
         studentai(A, kiek);
         fout.open(to_string(kiek)+".txt");
         
-        cout << kiek << " sugeneruota; ";
+        cout << "\n" << kiek << " studentu irasu sugeneravimo laikas: " << t.elapsed() << endl;
+        laik = t.elapsed();
+        t.reset();
 
         int ilgvardas = 0, ilgpavarde = 0;
         for (int x = 1; x < kiek; x++) {
@@ -140,8 +146,15 @@ void failai(vector<Studentas>& A, int& kiek) {
         }
         fout.close();
 
+        cout << kiek << " studentu surasymo i faila laikas: " << t.elapsed() << endl;
+        laik += t.elapsed();
+        t.reset();
 
         vidurkiu_rusiavimas(A, kiek);
+
+        cout << kiek << " studentu surusiavimo laikas: " << t.elapsed() << endl;
+        laik += t.elapsed();
+        t.reset();
 
         fout.open(to_string(kiek) + "nevykeliai.txt");
         fout << left << setw(ilgvardas + 5) << "Vardas" << left << setw(ilgpavarde + 5) << "Pavarde" << left << setw(15) << "Galutinis(Vid.)" << " / " << left << setw(15) << "Galutinis(Med.)" << endl;
@@ -149,8 +162,7 @@ void failai(vector<Studentas>& A, int& kiek) {
         for (int x = 0; x < kiek; x++) {
             if (A[x].vidurkis < 5) {
                 fout << setfill(' ') << left << setw(ilgvardas + 5) << A[x].vardas << left << setw(ilgpavarde + 5) << A[x].pavarde << left << setw(18) << fixed << setprecision(2) << A[x].vidurkis << left << setw(15) << fixed << setprecision(2) << A[x].mediana << endl; 
-            }
-            
+            }     
         }
         fout.close();
 
@@ -161,9 +173,15 @@ void failai(vector<Studentas>& A, int& kiek) {
             if (A[x].vidurkis >= 5) {
                 fout << setfill(' ') << left << setw(ilgvardas + 5) << A[x].vardas << left << setw(ilgpavarde + 5) << A[x].pavarde << left << setw(18) << fixed << setprecision(2) << A[x].vidurkis << left << setw(15) << fixed << setprecision(2) << A[x].mediana << endl;
             }
+            else {
+                break;
+            }
         }
         fout.close();
 
-        cout << kiek << " surusiuota; ";
+        cout << kiek << " studentu padalinimo i dvi grupes laikas ir surasymo i failus: " << t.elapsed() << endl;
+        laik += t.elapsed();
+        t.reset();
+        cout << "\nDarbo su " << kiek << " irasu testo laikas: " << laik << endl;
     }
 }
