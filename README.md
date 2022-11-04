@@ -1,5 +1,5 @@
--Atsitiktinai sugeneruojami studentų sąrašai ir jų pažymiai (1 000, 100 000, 1 000 000 ir 10 000 000 studentų)
 
--Tuomet sąrašai yra išvedami į failus.
 
--Tada sąrašai surušiuojami pagal studentų vidurkius ir padalinami į nevykėlius (vidurkis < 5) ir protinguolius (vidurkis >= 5). Surūšiuoti ir padalinti sąrašai taip pat išvedami į du atskirus failus.
+
+![image](https://user-images.githubusercontent.com/112699253/199916207-c98a3826-93e0-45ec-8cef-e3eeb8da77e5.png)
+
