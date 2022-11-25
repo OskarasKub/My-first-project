@@ -1,8 +1,12 @@
 **Naudojimosi instrukcija**
 -Vartotojo prašoma įvesti skaičių, kuris atitinka norimą atlikti užduotį.
+
 -Kai pasirinkta duomenis įvesti pačiam\\generuoti, vartotojo bus prašoma toliau arba vesti visus žinomus duomenis arba sugeneruoti jų tam tikrą kiekį.
+
 -Kai pasirinkta duomenis nuskaityti iš failo, duomenys bus nuskaityti iš failo "kursiokai.txt"
+
 -Kai pasirinkta sugeneruoti 5 failus, bus sugeneruoti 5 skirtingo dydžio failai su duomanimis. 
+
 -Kai pasirinkta atlikti konteinerių testavimą, bus atliktas vektorių testavimas trimis būdais. 1)Skaidant konteinerį į du to paties tipo "protinguolių" ir "nevykėlių" konteinerius. 2)Skaidant konteineį panaudojant tik vieną "nevykėlių" konteinerį. Tokiu būdu protinguoliai liks pradiniame konteineryje. 3)Skaidant konteinerį panaudojant *stable_partition*, *find_if* ir *copy* algoritmais.
 
 **Duomenų įvedimo/sugeneravimo rezultatai**
