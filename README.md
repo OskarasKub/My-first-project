@@ -7,7 +7,7 @@
 
 **Duomenų įvedimo/sugeneravimo rezultatai**
 
-[image](https://user-images.githubusercontent.com/112699253/203930677-e65d12b7-56a9-4ab0-92be-591d67247d8d.png)
+![image](https://user-images.githubusercontent.com/112699253/203930677-e65d12b7-56a9-4ab0-92be-591d67247d8d.png)
 
 **Duomenų nuskaitymo rezultatai**
 
@@ -19,5 +19,5 @@
 
 **Konteinerių testavimo rezultatai**
 
-![image](![image](https://user-images.githubusercontent.com/112699253/203928217-33306244-9356-4535-9395-a0adf7704883.png))
+![image](https://user-images.githubusercontent.com/112699253/203928217-33306244-9356-4535-9395-a0adf7704883.png)
 
